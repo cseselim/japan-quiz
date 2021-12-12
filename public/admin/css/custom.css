@@ -1,0 +1,176 @@
+.header.header-fixed {
+    height: 82px;
+}
+.classtune_logo{
+	width: 15%;
+	margin: auto 0;
+}
+.classtune_logo img{
+	width: 85%;
+}
+.navbar-brand img{
+	width: 80%;
+}
+#kt_header_mobile a img{
+	width: 60%;
+    margin: auto 0;
+}
+.header-menu-wrapper-left{
+	margin: 0 auto;
+}
+.header-menu .menu-nav > .menu-item .menu-submenu.menu-submenu-classic{
+	background: #fff;
+    padding: 0px 0px;
+}
+
+.container_padding{
+	padding: 0px 50px !important;
+}
+.navbar {
+    padding: 0rem 1rem;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.navbar-light .navbar-nav .nav-item{
+	border-right: 1px solid #ddd;
+    padding: 0px 10px;
+}
+.navbar-light .navbar-nav .nav-item:last-child{
+	border-right: none;
+}
+.main_area{
+	background: #fff;
+}
+.container_form{
+	padding: 0px 270px !important;
+}
+.applicant_form_area{
+	padding: 0px 38px;
+}
+.applicant_form_area label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #636b6f;
+    font-weight: 700;
+}
+.applicant_form_area .form-control {
+    width: 100%;
+    height: 35px;
+    font-size: 15px !important;
+}
+.applicant_form {
+    border: 1px solid #ddd;
+}
+.applicant_form h2 {
+    border: 1px solid #ddd;
+    padding: 14px 18px 14px 14px;
+    box-shadow: 3px 4px 6px #ddd;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font-size: 24px;
+    font-family: 'Raleway';
+    text-transform: capitalize;
+    font-weight: 600;
+    margin: 0px 0px 22px 0px;
+}
+.applicant_form label span{
+    color: red;
+    font-size: 25px;
+    line-height: 0;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: #ddd !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ddd !important;
+}
+
+::placeholder {
+  color: #ddd !important;
+}
+.navbar-nav h1{
+    font-size: 34px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0px;
+}
+.navbar-nav .address {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
+}
+.navbar-nav .web_address{
+    text-align: center;
+    font-size: 15px;
+    margin: 0;
+    font-weight: 700;
+}
+.justify-content-center {
+    margin-top: 8%;
+}
+.student_data_search label{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #636b6f;
+    font-weight: 700;
+}
+.student_data_search input{
+    font-size: 16px;
+    height: 38px;
+}
+.student_data_search .form-group{
+    margin-bottom: 0px;
+}
+.profile_pic{
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin-bottom: 20px;
+}
+.more_ans_field{
+    position: relative;
+}
+.remove-tr{
+    position: absolute;
+    top: 0;
+    right: 16px;
+    background: transparent !important;
+    border: 1px solid #ddd !important;
+    overflow: hidden;
+    padding: 8px 11px 18px 12px !important;
+}
+.remove-tr span{
+    font-size: 45px;
+    color: red;
+    line-height: 0;
+    margin: 9px -10px 0px -8px;
+    display: table;
+}
+#question_add_form input[type=checkbox] {
+    box-sizing: border-box;
+    padding: 0;
+    width: 24px;
+    margin: 0 auto;
+}
+.card{
+    background-image: linear-gradient(269deg, #00d9a6 0%, #9be15d 100%);
+}
+.btn-dark{
+    padding: 6px 28px !important;
+}
+.btn-success{
+    background-image: linear-gradient(269deg, #00d9a6 0%, #9be15d 100%);
+}
