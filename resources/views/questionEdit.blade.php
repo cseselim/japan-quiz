@@ -15,8 +15,8 @@
     <div class="row">
       <div class="col-md-12 pl-0">
         @if (\Session::has('error'))
-          <div class="alert alert-success" role="alert" style="font-size: 16px;">
-              {!! \Session::get('success') !!}
+          <div class="alert alert-danger" role="alert" style="font-size: 16px;">
+              {!! \Session::get('error') !!}
           </div>
         @endif
       </div>

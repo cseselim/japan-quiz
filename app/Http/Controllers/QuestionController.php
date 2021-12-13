@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\question;
 use App\answer;
 use App\lesson;
@@ -46,42 +47,47 @@ class QuestionController extends Controller
 
 
     public function store(Request $request){
-    	$validator = Validator::make($request->all(), [
+
+         $request->validate([
             'lesson_id' => 'required',
             'question_title' => 'required',
-            'answer_text' => 'required | in:no',
+             'answer_text' => 'required',
         ]);
 
-        $question = new question;
-        $question->lesson_id = $request->lesson_id;
-        $question->question_title = $request->question_title;
-        $question->question_explanation = $request->question_explanation;
-        $question->save();
+        if (in_array('on',$request->input('answer_text'))) {
+            $question = new question;
+            $question->lesson_id = $request->lesson_id;
+            $question->question_title = $request->question_title;
+            $question->question_explanation = $request->question_explanation;
+            $question->save();
 
-        $size = sizeof($request->answer_text);
+            $size = sizeof($request->answer_text);
 
-        if ($question->id) {
-        	for ($i = 0; $i < $size; $i++) {
-        		if ($request->answer_text[$i] == 'on') {
-        			$answer = answer::create([
-				    	'question_id' => $question->id,
-				    	'answer_text' => $request->answer_text[$i+1],
-				    	'answer' => '1',
-					]);
-					$i = $i+1;
-        		}else{
-        			$answer = answer::create([
-				    	'question_id' => $question->id,
-				    	'answer_text' => $request->answer_text[$i],
-					]);
-        		}
-				$ans = $answer->save();
-        	}
-        	if ($ans) {
-                return redirect()->back()->with('success', 'Question created successfully');
-            }else{
-                return redirect()->back()->with('error', 'Question is not create');
+            if ($question->id) {
+                for ($i = 0; $i < $size; $i++) {
+                    if ($request->answer_text[$i] == 'on') {
+                        $answer = answer::create([
+                            'question_id' => $question->id,
+                            'answer_text' => $request->answer_text[$i + 1],
+                            'answer' => '1',
+                        ]);
+                        $i = $i + 1;
+                    } else {
+                        $answer = answer::create([
+                            'question_id' => $question->id,
+                            'answer_text' => $request->answer_text[$i],
+                        ]);
+                    }
+                    $ans = $answer->save();
+                }
+                if ($ans) {
+                    return redirect()->back()->with('success', 'Question created successfully');
+                } else {
+                    return redirect()->back()->with('error', 'Question is not create');
+                }
             }
+        }else{
+            return redirect()->back()->with('error', 'Select question correct answer.');
         }
 
     }
@@ -96,49 +102,52 @@ class QuestionController extends Controller
 
     public function update(Request $request)
     {
-
-        $validator = Validator::make($request->all(), [
+        //dd($request->all());exit();
+        $request->validate([
             'lesson_id' => 'required',
             'question_title' => 'required',
-            'answer_text' => 'required | in:no',
+            'answer_text' => 'required',
         ]);
 
-        $question_id = $request->input('question_id');
-        $question_array = array(
-            'lesson_id' => $request->lesson_id,
-            'question_title' => $request->question_title,
-            'question_explanation' => $request->question_explanation,
-        );
-        question::where('id', $question_id)->update($question_array);
+        if (in_array('on',$request->input('answer_text'))){
+            $question_id = $request->input('question_id');
+            $question_array = array(
+                'lesson_id' => $request->lesson_id,
+                'question_title' => $request->question_title,
+                'question_explanation' => $request->question_explanation,
+            );
+            question::where('id', $question_id)->update($question_array);
 
 
-        $size = sizeof($request->answer_text);
+            $size = sizeof($request->answer_text);
 
-        if ($question_id) {
-            answer::where('question_id',$question_id)->delete();
-            for ($i = 0; $i < $size; $i++) {
-                if ($request->answer_text[$i] == 'on') {
-                    $answer = answer::create([
-                        'question_id' => $question_id,
-                        'answer_text' => $request->answer_text[$i+1],
-                        'answer' => '1',
-                    ]);
-                    $i = $i+1;
-                }else{
-                    $answer = answer::create([
-                        'question_id' => $question_id,
-                        'answer_text' => $request->answer_text[$i],
-                    ]);
+            if ($question_id) {
+                answer::where('question_id',$question_id)->delete();
+                for ($i = 0; $i < $size; $i++) {
+                    if ($request->answer_text[$i] == 'on') {
+                        $answer = answer::create([
+                            'question_id' => $question_id,
+                            'answer_text' => $request->answer_text[$i+1],
+                            'answer' => '1',
+                        ]);
+                        $i = $i+1;
+                    }else{
+                        $answer = answer::create([
+                            'question_id' => $question_id,
+                            'answer_text' => $request->answer_text[$i],
+                        ]);
+                    }
+                    $ans = $answer->save();
                 }
-                $ans = $answer->save();
+                if ($ans) {
+                    return redirect()->back()->with('success', 'Question update successfully');
+                }else{
+                    return redirect()->back()->with('error', 'Question is not update');
+                }
             }
-            if ($ans) {
-                return redirect()->back()->with('success', 'Question update successfully');
-            }else{
-                return redirect()->back()->with('error', 'Question is not update');
-            }
+        }else{
+            return redirect()->back()->with('error', 'Select question correct answer.');
         }
-
 
     }
 

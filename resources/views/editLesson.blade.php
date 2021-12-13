@@ -6,7 +6,7 @@
         <div class="col-md-6 pl-0">
           <h2 style="font-size: 30px;
             font-weight: 600;
-            padding-bottom: 8px;">Update List</h2>  
+            padding-bottom: 8px;">Update List</h2>
         </div>
         <div class="col-md-6 text-right pr-0">
             <a href="{{route('home')}}" class="btn btn-success" style="font-size: 16px;
