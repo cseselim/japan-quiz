@@ -61,22 +61,18 @@ class WordController extends Controller
 
     public function store(Request $request)
     {
-        $word_model = new word;
-
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'lesson_id' => 'required',
-            'question_title' => 'required',
+            'word' => 'required',
         ]);
-        if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Word insert Fail');
+        $word = new word;
+        $word->lesson_id = $request->lesson_id;
+        $word->word = $request->word;
+        $result = $word->save();
+        if ($result) {
+            return redirect()->back()->with('success', 'Word created successfully');
         }else{
-            $word = $word_model::create($validator->validated());
-            $result = $word->save();
-            if ($result) {
-                return redirect()->back()->with('success', 'Word created successfully');
-            }else{
-                return redirect()->back()->with('error', 'Word is not create');
-            }
+            return redirect()->back()->with('error', 'Word is not create');
         }
     }
 
