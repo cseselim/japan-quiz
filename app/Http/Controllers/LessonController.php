@@ -28,15 +28,15 @@ class LessonController extends Controller
                     ->addIndexColumn()
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-   
+
                            $btn = '<a href="' . route('lesson.details', $row->id) .'" class="edit btn btn-success btn-sm" data-id='."{$row->id}".' id="edit_school">view</a> <a href="' . route('lesson.edit', $row->id) .'" class="edit btn btn-primary btn-sm" data-id='."{$row->id}".' id="edit_school">Edit</a>  <a href="javascript:void(0)" class="edit btn btn-danger btn-sm" data-id="'.$row->id.'" id="delete_lesson">Delete</a>';
-    
+
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
-      
+
         return view('home');
     }
 
@@ -53,8 +53,8 @@ class LessonController extends Controller
             'lesson_name' => 'required',
             'lesson_discription' => 'required',
             'video_url' => 'required',
-            'word_title' => 'required',
-            'quiz_title' => 'required',
+//            'word_title' => 'required',
+//            'quiz_title' => 'required',
         ]);
     	if ($validator->fails()) {
             return redirect()->back()->with('error', 'Lesson insert Fail');
@@ -82,8 +82,6 @@ class LessonController extends Controller
             'lesson_name' => 'required',
             'lesson_discription' => 'required',
             'video_url' => 'required',
-            'word_title' => 'required',
-            'quiz_title' => 'required'
         ]);
 
         if ($validator->fails()) {

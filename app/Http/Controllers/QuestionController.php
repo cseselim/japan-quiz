@@ -87,7 +87,7 @@ class QuestionController extends Controller
                 }
             }
         }else{
-            return redirect()->back()->with('error', 'Select question correct answer.');
+            return redirect()->back()->with('error', 'Select question correct answer.')->withInput();
         }
 
     }

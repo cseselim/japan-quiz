@@ -44,7 +44,7 @@ class WordController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
 
-                        $btn = '<a href="' . route('word.view', $row['lesson_id']) .'" class="edit btn btn-primary btn-sm" data-id='."{$row['lesson_id']}".' id="edit_word">View</a>';
+                        $btn = '<a href="' . route('word.view',[$row['lesson_id']]) .'" class="edit btn btn-primary btn-sm" data-id='."{$row['lesson_id']}".' id="edit_word">View</a>';
                         return $btn;
                     })
                     ->rawColumns(['action'])
@@ -64,10 +64,12 @@ class WordController extends Controller
         $request->validate([
             'lesson_id' => 'required',
             'word' => 'required',
+            'meaning'=>'required'
         ]);
         $word = new word;
         $word->lesson_id = $request->lesson_id;
         $word->word = $request->word;
+        $word->meaning = $request->meaning;
         $result = $word->save();
         if ($result) {
             return redirect()->back()->with('success', 'Word created successfully');
@@ -79,12 +81,12 @@ class WordController extends Controller
 
     public function view(Request $request)
     {
-        $id = request()->segment(2);
         if ($request->ajax()) {
+            $id = $request->input('lession_id');
             $words = DB::table('lessons')
                 ->join('words', 'lessons.id', '=', 'words.lesson_id')
-                ->select('words.id','lessons.id as lesson_id', 'lessons.lesson_name', 'words.word')
-                //->where('words.lesson_id', $id)
+                ->select('words.id','lessons.id as lesson_id', 'lessons.lesson_name', 'words.word', 'words.meaning')
+                ->where('words.lesson_id', $id)
                 ->get();
 
             return Datatables::of($words)
@@ -114,6 +116,7 @@ class WordController extends Controller
         $validator = Validator::make($request->all(), [
             'lesson_id' => 'required',
             'word' => 'required',
+            'meaning'=>'required'
         ]);
 
         if ($validator->fails()) {

@@ -45,6 +45,10 @@
             <label for="exampleInputEmail1" style="font-weight: 700">lesson Word: </label>
             <input type="text" class="form-control" id="word" name="word" value="<?= $word_data->word ?>" required>
           </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1" style="font-weight: 700">Word Meaning: </label>
+              <input type="text" class="form-control" value="<?= $word_data->meaning ?>" id="meaning" name="meaning" placeholder="Word Meaning" required>
+          </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

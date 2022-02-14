@@ -17,7 +17,7 @@
       <div class="col-md-12 pl-0">
         @if (\Session::has('error'))
           <div class="alert alert-success" role="alert" style="font-size: 16px;">
-              {!! \Session::get('success') !!}
+              {!! \Session::get('error') !!}
           </div>
         @endif
       </div>
@@ -45,14 +45,14 @@
             <label for="exampleInputEmail1" style="font-weight: 700">video_url: </label>
             <input type="text" class="form-control" id="video_url" name="video_url" value="{{$data->video_url}}" required>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" style="font-weight: 700">Word Title: </label>
-            <input type="text" class="form-control" id="word_title" name="word_title" value="{{$data->word_title}}" required>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" style="font-weight: 700">Quiz Title: </label>
-            <input type="text" class="form-control" id="quiz_title" name="quiz_title" value="{{$data->quiz_title}}" required>
-          </div>
+{{--          <div class="form-group">--}}
+{{--            <label for="exampleInputEmail1" style="font-weight: 700">Word Title: </label>--}}
+{{--            <input type="text" class="form-control" id="word_title" name="word_title" value="{{$data->word_title}}" required>--}}
+{{--          </div>--}}
+{{--          <div class="form-group">--}}
+{{--            <label for="exampleInputEmail1" style="font-weight: 700">Quiz Title: </label>--}}
+{{--            <input type="text" class="form-control" id="quiz_title" name="quiz_title" value="{{$data->quiz_title}}" required>--}}
+{{--          </div>--}}
           <button type="submit" class="btn btn-success">Update</button>
         </form>
     </div>

@@ -6,7 +6,7 @@
         <div class="col-md-6 pl-0">
           <h2 style="font-size: 30px;
             font-weight: 600;
-            padding-bottom: 8px;">Lesson List</h2>  
+            padding-bottom: 8px;">Lesson List</h2>
         </div>
         <div class="col-md-6 text-right pr-0">
             <a href="{{route('word.list')}}" class="btn btn-success" style="font-size: 15px;text-transform: capitalize;padding: 8px 12px;">lesson list</a>
@@ -43,6 +43,10 @@
           <div class="form-group">
             <label for="exampleInputEmail1" style="font-weight: 700">lesson Word: </label>
             <input type="text" class="form-control" id="word" name="word" placeholder="lesson Word" required>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1" style="font-weight: 700">Word Meaning: </label>
+              <input type="text" class="form-control" id="meaning" name="meaning" placeholder="Word Meaning" required>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

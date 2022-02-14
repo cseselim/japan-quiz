@@ -45,10 +45,7 @@
             <label for="exampleInputEmail1" style="font-weight: 700">Question Title: </label>
             <input type="text" class="form-control" id="question_title" name="question_title" value="<?= $question['question_title'] ?>" required>
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" style="font-weight: 700">Question Explanation: </label>
-            <textarea class="form-control" id="question_explanation" name="question_explanation" placeholder="Question Explanation" required><?= $question['question_explanation'] ?></textarea>
-          </div>
+
           <div class="form-group">
               <label for="exampleInputEmail1" style="font-weight: 700">Answer: </label>
               <div class="row" id="dynamicForm">

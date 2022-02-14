@@ -23,6 +23,7 @@
             <tr>
                 <th>Lesson Name</th>
                 <th style="text-align: center;">Word</th>
+                <th style="text-align: center;">Meaning</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -31,6 +32,7 @@
             </tbody>
         </table>
         <!--end: Datatable-->
+        <p id="lession_id" style="display: none">{{ Request::segment(2) }}</p>
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -40,13 +42,20 @@
             dataTable = jQuery('#word_table').DataTable();
 
             function word_list(){
+                var lession_id = jQuery('#lession_id').html();
                 var dataTable = jQuery('#word_table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('word.view') }}",
+                    {{--ajax: "{{ route('word.view') }}",--}}
+                    ajax:{
+                        type: 'GET',
+                        url:'wordView',
+                        data:{lession_id: lession_id},
+                    },
                     columns: [
                         {data: 'lesson_name', name: 'lesson_name'},
                         {data: 'word', name: 'word',width: '40%'},
+                        {data: 'meaning', name: 'meaning'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
                     ],
                     order: [[0, 'asc']]

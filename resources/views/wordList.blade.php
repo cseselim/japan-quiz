@@ -12,7 +12,7 @@
         <div class="col-md-6 pl-0">
           <h2 style="font-size: 30px;
             font-weight: 600;
-            padding-bottom: 8px;">Word List</h2>  
+            padding-bottom: 8px;">Word List</h2>
         </div>
         <div class="col-md-6 text-right pr-0">
             <a href="{{route('create.word')}}" class="btn btn-success" style="font-size: 15px;text-transform: capitalize;padding: 8px 12px;">create word</a>
@@ -27,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            
+
         </tbody>
     </table>
     <!--end: Datatable-->
@@ -51,12 +51,12 @@
             ],
             order: [[0, 'asc']]
         });
-        
+
         }
 
     /*===========School Data Delete ::Start================*/
     $(document).on('click', '#delete_word', function () {
-  
+
         var word_id = $(this).data("id");
         var result = confirm("Want to delete?");
         if (result) {
@@ -68,9 +68,9 @@
                     jQuery('#word_table').DataTable().destroy();
                     word_list();
                 }
-            }                   
+            }
         });
-        }        
+        }
     });
 
      })//document function

@@ -36,17 +36,13 @@
             <select class="form-control" id="lesson_id" name="lesson_id" required>
               <option value="">Select Lesson</option>
               <?php foreach ($lesson as $value) { ?>
-                <option value="<?= $value->id ?>"><?= $value->lesson_name ?></option>
+                <option {{ (old("lesson_id") == $value->id ? "selected":"") }} value="<?= $value->id ?>"><?= $value->lesson_name ?></option>
               <?php } ?>
             </select>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1" style="font-weight: 700">Question Title: </label>
-            <input type="text" class="form-control" id="question_title" name="question_title" placeholder="Question Title" required>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1" style="font-weight: 700">Question Explanation: </label>
-            <textarea class="form-control" id="question_explanation" name="question_explanation" placeholder="Question Explanation" required></textarea>
+            <input type="text" value="{{ old('question_title') }}" class="form-control" id="question_title" name="question_title" placeholder="Question Title" required>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1" style="font-weight: 700">Answer: </label>
@@ -57,7 +53,7 @@
                     <input type="checkbox" class="form-control" name="answer_text[]" >
                   </div>
                   <div class="col-10 pl-0">
-                    <input type="text" class="form-control mb-4" name="answer_text[]" placeholder="Answer" required>
+                    <input type="text" value="{{ old('answer_text.0') }}" class="form-control mb-4" name="answer_text[]" placeholder="Answer" required>
                   </div>
                 </div>
               </div><!--item end--->
@@ -67,7 +63,7 @@
                     <input type="checkbox" class="form-control" name="answer_text[]" >
                   </div>
                   <div class="col-10 pl-0">
-                    <input type="text" class="form-control mb-4" name="answer_text[]" placeholder="Answer" required>
+                    <input type="text" class="form-control mb-4" value="{{ old('answer_text.1') }}" name="answer_text[]" placeholder="Answer" required>
                   </div>
                 </div>
               </div><!--item end--->
@@ -77,7 +73,7 @@
                     <input type="checkbox" class="form-control" name="answer_text[]" >
                   </div>
                   <div class="col-10 pl-0">
-                    <input type="text" class="form-control mb-4" name="answer_text[]" placeholder="Answer" required>
+                    <input type="text" class="form-control mb-4" value="{{ old('answer_text.2') }}" name="answer_text[]" placeholder="Answer" required>
                   </div>
                 </div>
               </div><!--item end--->
@@ -87,7 +83,7 @@
                     <input type="checkbox" class="form-control" name="answer_text[]" >
                   </div>
                   <div class="col-10 pl-0">
-                    <input type="text" class="form-control mb-4" name="answer_text[]" placeholder="Answer" required>
+                    <input type="text" class="form-control mb-4" value="{{ old('answer_text.3') }}" name="answer_text[]" placeholder="Answer" required>
                   </div>
                 </div>
               </div><!--item end--->
