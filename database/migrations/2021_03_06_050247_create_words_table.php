@@ -18,6 +18,7 @@ class CreateWordsTable extends Migration
             $table->unsignedBigInteger('lesson_id');
             $table->foreign('lesson_id')->references('id')->on('lessons')->onDelete('cascade');
             $table->string('word');
+            $table->string('meaning');
             $table->integer('status')->default(1);
             $table->timestamps();
         });
